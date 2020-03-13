@@ -4,15 +4,31 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="<?php echo Theme::lang() ?>">
 	<head>
-		<title>Aerial by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<!-- meta description -->
+		<?php echo Theme::metaTagDescription(); ?>
+
+		<!-- Dynamic title tag -->
+		<?php echo Theme::metaTagTitle(); ?>
+
+		<!-- Include the CSS Files -->
+		<?php echo Theme::css('assets/css/main.css') ?>		
+
+		<!-- Load Bludit Plugins: Site head -->
+		<?php Theme::plugins('siteHead'); ?>
+	
 	</head>
+
+
 	<body class="is-preload">
+
+	<!-- Load Bludit Plugins: Site Body Begin -->
+	<?php Theme::plugins('siteBodyBegin'); ?>
+
 		<div id="wrapper">
 			<div id="bg"></div>
 			<div id="overlay"></div>
@@ -20,15 +36,19 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1>Adam Jensen</h1>
-						<p>Security Chief &nbsp;&bull;&nbsp; Cyborg &nbsp;&bull;&nbsp; Never asked for this</p>
-						<nav>
+
+					<?php foreach($content as $page): ?>
+
+						<h1><?php echo $page->title(); ?></h1>
+						<p><?php echo $page->content(); ?></p>
+					
+					<?php endforeach; ?>
+					
+					<nav>
 							<ul>
-								<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-								<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+								<li><a target="_blank" href="<?php echo $page->custom('twitter') ?>" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a target="_blank" href="<?php echo $page->custom('facebook') ?>" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a target="_blank" href="<?php echo $page->custom('github') ?>" class="icon brands fa-github"><span class="label">Github</span></a></li>
 							</ul>
 						</nav>
 					</header>
@@ -45,5 +65,6 @@
 			window.ontouchmove = function() { return false; }
 			window.onorientationchange = function() { document.body.scrollTop = 0; }
 		</script>
+
 	</body>
 </html>
