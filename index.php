@@ -2,8 +2,10 @@
 <?php include(THEME_DIR_PHP.'header.php'); ?>
 
 					<header id="header">
+					<?php foreach($content as $page): ?>
 						<h1><?php echo $page->title(); ?></h1>
 						<p><?php echo $page->content(); ?></p>
+					<?php endforeach() ?>
 					<nav>
 							<ul>
 								<li><a target="_blank" href="<?php echo $site->twitter() ?>" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
