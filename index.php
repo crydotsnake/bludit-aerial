@@ -8,9 +8,20 @@
 					<?php endforeach ?>
 					<nav>
 							<ul>
-								<li><a target="_blank" href="<?php echo $site->twitter() ?>" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a target="_blank" href="<?php echo $site->facebook() ?>" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a target="_blank" href="<?php echo $site->github() ?>" class="icon brands fa-github"><span class="label">Github</span></a></li>
+								<?php
+									if ($site->twitter()){
+										echo '<li><a target="_blank" href="'.$site->twitter().'" class="icon brands fa-twitter"></a></li>';
+										}
+									if ($site->instagram()){
+										echo '<li><a target="_blank" href="'.$site->instagram().'" class="icon brands fa-instagram"></a></li>';
+										}
+									if ($site->facebook()){
+										echo '<li><a target="_blank" href="'.$site->facebook().'" class="icon brands fa-facebook-f"></a></li>';
+										}
+									if ($site->github()){
+										echo '<li><a target="_blank" href="'.$site->github().'" class="icon brands fa-github"></a></li>';
+										}
+						?>
 							</ul>
 						</nav>
 					</header>
